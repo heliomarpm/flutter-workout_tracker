@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:workout_done/data/hive_db.dart';
 
 import '../models/workout.dart';
 import '../models/exercise.dart';
 
 class WorkoutData extends ChangeNotifier {
+  final _db = HiveDb();
+
   List<Workout> workouts = [
     Workout(name: "Upper Body", exercises: [
       Exercise(
@@ -14,6 +17,14 @@ class WorkoutData extends ChangeNotifier {
       )
     ])
   ];
+
+  void initialWorkoutList() {
+    if (_db.hasPreviousData()) {
+      workouts = _db.read();
+    } else {
+      _db.save(workouts);
+    }
+  }
 
   List<Workout> getWorkouts() {
     return workouts;
