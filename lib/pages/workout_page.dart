@@ -108,6 +108,7 @@ class _WorkoutPageState extends State<WorkoutPage> {
         appBar: AppBar(title: Text(widget.workoutName)),
         floatingActionButton: FloatingActionButton(
           onPressed: createNewExercise,
+          backgroundColor: Colors.black87,
           child: const Icon(Icons.add),
         ),
         body: ListView.builder(

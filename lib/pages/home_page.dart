@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:workout_done/components/heat_map_wrapper.dart';
 import 'package:workout_done/pages/workout_page.dart';
@@ -74,12 +75,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Consumer<WorkoutData>(
       builder: (context, value, child) => Scaffold(
-        backgroundColor: Colors.grey[300],
+          backgroundColor: Colors.grey[300],
           appBar: AppBar(
             title: const Text("Workout Done"),
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: createNewWorkout,
+            backgroundColor: Colors.black87,
             child: const Icon(Icons.add),
           ),
           body: ListView(children: [
@@ -92,12 +94,31 @@ class _HomePageState extends State<HomePage> {
               physics: const NeverScrollableScrollPhysics(),
               // itemBuilder: (context, index) => const ListTile(title: Text("test")),
               itemCount: value.getWorkouts().length,
-              itemBuilder: (context, index) => ListTile(
-                title: Text(value.getWorkouts()[index].name),
-                trailing: IconButton(
-                  icon: const Icon(Icons.arrow_forward_ios),
-                  onPressed: () =>
-                      goToWorkPage(value.getWorkouts()[index].name),
+              itemBuilder: (context, index) => Slidable(
+                endActionPane: ActionPane(
+                  motion: const StretchMotion(),
+                  children: [
+                    SlidableAction(
+                      onPressed: null,
+                      backgroundColor: Colors.grey.shade800,
+                      icon: Icons.settings,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    SlidableAction(
+                      onPressed: null,
+                      backgroundColor: Colors.red.shade800,
+                      icon: Icons.delete,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ],
+                ),
+                child: ListTile(
+                  title: Text(value.getWorkouts()[index].name),
+                  trailing: IconButton(
+                    icon: const Icon(Icons.arrow_forward_ios),
+                    onPressed: () =>
+                        goToWorkPage(value.getWorkouts()[index].name),
+                  ),
                 ),
               ),
             ),
