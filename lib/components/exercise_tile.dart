@@ -14,21 +14,29 @@ class ExerciseTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.purple[50],
-      // color: Colors.grey[200],
-      child: ListTile(
-        title: Text(exercise.name),
-        subtitle: Row(
-          children: [
-            Chip(label: Text("${exercise.weight} kg")),
-            Chip(label: Text("${exercise.reps} reps")),
-            Chip(label: Text("${exercise.sets} sets")),
-          ],
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Container(
+        padding: EdgeInsets.all(24),
+        decoration: BoxDecoration(
+          color: Colors.grey[100],
+          borderRadius: BorderRadius.circular(12),
         ),
-        trailing: Checkbox(
-          value: exercise.isCompleted,
-          onChanged: (value) => onCheckboxChanged!(value),
+
+        // color: Colors.purple[50],
+        child: ListTile(
+          title: Text(exercise.name),
+          subtitle: Row(
+            children: [
+              Chip(label: Text("${exercise.weight} kg")),
+              Chip(label: Text("${exercise.reps} reps")),
+              Chip(label: Text("${exercise.sets} sets")),
+            ],
+          ),
+          trailing: Checkbox(
+            value: exercise.isCompleted,
+            onChanged: (value) => onCheckboxChanged!(value),
+          ),
         ),
       ),
     );

@@ -7,7 +7,7 @@ import 'pages/home_page.dart';
 
 void main() async {
   await Hive.initFlutter();
-  await Hive.openBox("workout_database");
+  await Hive.openBox("workout_dbase");
 
   runApp(const MyApp());
 }
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
+          useMaterial3: false,
         ),
         home: const HomePage(),
       ),

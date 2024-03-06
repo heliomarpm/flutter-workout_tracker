@@ -34,15 +34,31 @@ class _WorkoutPageState extends State<WorkoutPage> {
           children: [
             TextField(
               controller: exerciseNameController,
+              decoration: InputDecoration(
+                hintText: "new exercise name",
+                hintStyle: TextStyle(color: Colors.grey[600]),
+              ),
             ),
             TextField(
               controller: exerciseWeightController,
+              decoration: InputDecoration(
+                hintText: "weight (kg)",
+                hintStyle: TextStyle(color: Colors.grey[600]),
+              ),
             ),
             TextField(
               controller: exerciseRepsController,
+              decoration: InputDecoration(
+                hintText: "reps",
+                hintStyle: TextStyle(color: Colors.grey[600]),
+              ),
             ),
             TextField(
               controller: exerciseSetsController,
+              decoration: InputDecoration(
+                hintText: "sets",
+                hintStyle: TextStyle(color: Colors.grey[600]),
+              ),
             ),
           ],
         ),
